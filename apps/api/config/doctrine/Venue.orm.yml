@@ -1,0 +1,4 @@
+App\Entity\Location:
+    type: entity
+    id:
+        id: string

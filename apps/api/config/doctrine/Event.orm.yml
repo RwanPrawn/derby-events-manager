@@ -1,0 +1,13 @@
+App\Entity\Event:
+    type: entity
+    id:
+        id:
+            type: string
+    fields:
+        name:
+            type: string
+            length: 200
+        startDate:
+            type: datetime
+        endDate:
+            type: datetime
