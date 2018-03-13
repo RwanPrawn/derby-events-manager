@@ -1,0 +1,11 @@
+version: "2.1"
+
+services:
+    php:
+        user: ${LOCAL_USER}
+        volumes:
+            - './apps/api:/usr/src/app'
+
+    nginx:
+        ports:
+            - '${NGINX_PORT}:80'

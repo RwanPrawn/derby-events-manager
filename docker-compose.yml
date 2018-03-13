@@ -1,0 +1,30 @@
+version: "2.1"
+
+services:
+    php:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        restart: on-failure
+        environment:
+            - DB_HOST=db
+            - DB_NAME=derby-events-manager
+            - DB_USER=root
+            - DB_PASSWORD=root
+        depends_on:
+            - db
+
+    db:
+        image: mariadb:10.1
+        restart: on-failure
+        environment:
+            - MYSQL_ROOT_PASSWORD=root
+            - MYSQL_DATABASE=derby-events-manager
+
+    nginx:
+        build:
+            context: .
+            dockerfile: docker/nginx/Dockerfile
+        restart: on-failure
+        depends_on:
+            - php
