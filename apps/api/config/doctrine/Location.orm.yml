@@ -1,0 +1,8 @@
+App\Entity\Location:
+    type: entity
+    id:
+        id: string
+    fields:
+        name:
+            type: string
+            length: 200

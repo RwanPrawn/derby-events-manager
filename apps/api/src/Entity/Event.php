@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use App\Uuid;
+use ApiPlatform\Core\Annotation\ApiResource;
 
+/**
+ * @ApiResource
+ */
 class Event
 {
     /**
@@ -55,5 +59,20 @@ class Event
     public function getEndDate(): DateTime
     {
         return $this->endDate;
+    }
+
+    public function setName(string $name)
+    {
+        $this->name = $name;
+    }
+
+    public function setStartDate(\DateTime $startDate)
+    {
+        $this->startDate = $startDate;
+    }
+
+    public function setEndDate(\DateTime $endDate)
+    {
+        $this->endDate = $endDate;
     }
 }
