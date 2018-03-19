@@ -1,7 +1,12 @@
 FROM php:7.2.3-fpm-alpine
 
 COPY docker/php/repositories /etc/apk/repositories
-RUN apk add --no-cache git bash openssl openssh mysql-client
+RUN apk add --no-cache musl=1.1.18-r3 git bash openssl openssh autoconf g++ make pcre-dev libpng-dev libjpeg-turbo-dev freetype-dev busybox-suid icu-dev mysql-client
+
+RUN docker-php-ext-install pdo_mysql fileinfo gd
+RUN pecl install apcu-5.1.8
+RUN docker-php-ext-enable apcu
+
 RUN apk add --no-cache composer@edge_community
 
 WORKDIR /usr/src/app
